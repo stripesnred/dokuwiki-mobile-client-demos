@@ -14,11 +14,10 @@ Example client script for JQUERY:AJAX -> WIKIRPC:Demo
   <h2> Client example </h2>
   <h3>Output: </h3>  
   <div id="output">this element will be accessed by jquery and this text replaced</div>
- 
+  
   <script id="source" language="javascript" type="text/javascript">
 
-  
-  $(document).ready(function()
+  sendAjax = function()
   {
     //-----------------------------------------------------------------------
     // 2) Send an http request with AJAX http://api.jquery.com/jQuery.ajax/
@@ -33,7 +32,7 @@ Example client script for JQUERY:AJAX -> WIKIRPC:Demo
 		dataType:'text',
 		success: function(xml) {
 			$(xml).find('value').each(function(){
-				var dokuVersion = $(this).find("string").text();
+				dokuVersion = $(this).find("string").text();
 				//--------------------------------------------------------------------
 				// 3) Update html content
 				//--------------------------------------------------------------------
@@ -42,8 +41,10 @@ Example client script for JQUERY:AJAX -> WIKIRPC:Demo
 		},
 		error: function(request, status, error){ alert(request.responseText);}
 	   });
-    }); 
+    } 
 	
   </script>
+  <br><br>  
+  <input type="button" style="width: 90px; height: 30px" value="send AJAX" onclick="sendAjax();" />
   </body>
 </html>
